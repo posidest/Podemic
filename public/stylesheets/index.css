@@ -380,7 +380,16 @@ fieldset label {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: center;
+  /* align-items: center; */
+  width: 90%;
+}
+.button-holder{
+  padding-top: 25px;
+  margin-bottom: -35px;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .shelf__btn_container .pod_review_container form {
@@ -395,9 +404,15 @@ fieldset label {
   padding: 20px;
 }
 
-.shelf_btn button {
-  height: 100px;
-  width: 100px;
+.shelf_btn{
+  /* height: 100px;
+  width: 100px; */
+  padding:25px;
+  font-size: 35px;
+  cursor: pointer;
+}
+.shelf_btn:hover{
+  opacity: .8;
 }
 
 .podcast_name {
@@ -417,6 +432,9 @@ fieldset label {
 .descriptionDiv p {
   width: 300px;
   font-size: 13px;
+}
+.avgRating{
+  padding-top: 25px;
 }
 
 .episode-div {
