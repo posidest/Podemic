@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const unirest = require('unirest');
 const apiKey = process.env.LISTEN_API_KEY
-const baseUrl = 'https://listen-api-test.listennotes.com/api/v2'
+const baseUrl = 'https://listen-api.listennotes.com/api/v2'
 const { User, Shelf } = require('../db/models');
 const { csrf, csrfProtection, bcrypt, check, validationResult, asyncHandler, createShelves, populateShelves } = require("../lib/util")
 const { loginUser, logoutUser } = require("../auth")
@@ -85,6 +85,7 @@ router.get('/', csrfProtection, asyncHandler(async(req, res) => {
 
     for (let i=0; i < users_shelf.length; i++){
         let shelf = users_shelf[i]
+        console.log(shelf.podcasts, "this is self podcasts")
         let shelfname = shelf.name.split("+")
         let name = shelfname[0]
         let icon = shelfname[1]
@@ -103,8 +104,9 @@ router.get('/', csrfProtection, asyncHandler(async(req, res) => {
         let podcast;
         for (let j= 0; j< shelf.podcasts.length; j++){
             let pod = shelf.podcasts[j]
-            const client = Client({ apiKey: null });
-            let response =await client.fetchPodcastById({id: pod.id, sort: 'recent_first',
+            
+            const client = Client({ apiKey: apiKey});
+            let response =await client.fetchPodcastById({id: pod, sort: 'recent_first',
             }).then((response) => {
                 newPodsArray.push(response.data)
   // Get response json data here
@@ -127,7 +129,7 @@ router.get('/', csrfProtection, asyncHandler(async(req, res) => {
     
     // const genre_info = await Genre.findAll();
     let genres=[]
-    const client = Client({ apiKey: null });
+    const client = Client({ apiKey: apiKey });
     let response = await client.fetchPodcastGenres({
         top_level_only: 1,
       }).then((response) => {

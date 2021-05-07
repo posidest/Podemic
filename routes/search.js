@@ -7,7 +7,7 @@ const { asyncHandler, csrf } = require("../lib/util")
 const { logoutUser } = require("../auth");
 const { apiKey } = require('../config');
 const unirest = require("unirest");
-const baseUrl = 'https://listen-api-test.listennotes.com/api/v2';
+const baseUrl = 'https://listen-api.listennotes.com/api/v2';
 
 router.get("/:searchterm", asyncHandler(async (req, res) => {
     let searchParam = req.params.searchterm;

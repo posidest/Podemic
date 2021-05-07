@@ -5,7 +5,7 @@ const { User, Podcast, Genre, Shelf } = require("../db/models")
 const { csrf, csrfProtection, bcrypt, check, validationResult, asyncHandler, createShelves } = require("../lib/util")
 const { loginUser, logoutUser } = require("../auth")
 const apiKey = process.env.LISTEN_API_KEY
-const baseUrl = 'https://listen-api-test.listennotes.com/api/v2'
+const baseUrl = 'https://listen-api.listennotes.com/api/v2'
 // for the home page
 
 
@@ -40,11 +40,12 @@ router.get('/', csrfProtection, (req, res) => {
     const featuredRes = await unirest.get(`${baseUrl}/podcasts/${thumbsUpShelf[randIndex]}/recommendations?safe_mode=0`)
   .header('X-ListenAPI-Key', apiKey)
   let resJson = await featuredRes.toJSON();
+  
  let featuredPods = [];
-  if(resJson.recommendations){
+  if(resJson.body.recommendations){
 
-    featuredPods= resJson.recommendations
-  }
+    featuredPods= resJson.body.recommendations
+  }else{
       featuredPods = [
           {
             "id": "19545a5b82bf42d3ba40d973c35e9851",
@@ -255,7 +256,7 @@ router.get('/', csrfProtection, (req, res) => {
             "listennotes_edit_url": "https://www.listennotes.com/e/729faf98658342fc82917b768d69aff3/#edit"
           }
         ]
-
+      }
       
       //featuredPods was undefined...for now i am sending all the featured pods as recommended
 

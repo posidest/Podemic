@@ -129,7 +129,7 @@ router.get('/genres', asyncHandler(async (req, res) => {
 // If apiKey is null, then we will connect to a mock server
 // that returns fake data for testing purposes.
 let genres = []
-const client = Client({ apiKey: null });
+const client = Client({ apiKey: apiKey });
 client.fetchPodcastGenres({
   top_level_only: 1,
 }).then((response) => {
