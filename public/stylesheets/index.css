@@ -335,7 +335,7 @@ fieldset label {
 }
 
 /* INDIVIDUAL PODCAST PAGE (podcast.pug) */
-.message{
+.message {
   margin-top: 20px;
   text-decoration: none;
   color: rgb(26, 26, 26);
@@ -357,6 +357,18 @@ fieldset label {
   margin-bottom: 60px;
 }
 
+#ReviewDiv {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.individual-review {
+  margin: 20px 20px 60px 20px;
+  width: 300px;
+}
+
 .shelf_btn_container {
   display: flex;
   flex-direction: column;
@@ -368,7 +380,16 @@ fieldset label {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: center;
+  /* align-items: center; */
+  width: 90%;
+}
+.button-holder{
+  padding-top: 25px;
+  margin-bottom: -35px;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .shelf__btn_container .pod_review_container form {
@@ -383,9 +404,15 @@ fieldset label {
   padding: 20px;
 }
 
-.shelf_btn button {
-  height: 100px;
-  width: 100px;
+.shelf_btn{
+  /* height: 100px;
+  width: 100px; */
+  padding:25px;
+  font-size: 35px;
+  cursor: pointer;
+}
+.shelf_btn:hover{
+  opacity: .8;
 }
 
 .podcast_name {
@@ -405,6 +432,9 @@ fieldset label {
 .descriptionDiv p {
   width: 300px;
   font-size: 13px;
+}
+.avgRating{
+  padding-top: 25px;
 }
 
 .episode-div {
@@ -556,7 +586,7 @@ fieldset label {
   justify-content: center;
   margin-top: 30px;
 }
-#shelves{
+#shelves {
   display: flex;
   flex-direction: column;
 }
@@ -570,7 +600,6 @@ fieldset label {
   height: 550px;
   width: 550px;
 }
-
 
 .Podshelf__container {
   display: flex;
@@ -588,15 +617,13 @@ fieldset label {
   align-items: center;
   border-bottom: 0.75px solid rgba(0, 0, 0, 0.1);
   width: 100%;
-
 }
-.remove-button{
-  opacity: .2;
-  padding:10px;
+.remove-button {
+  opacity: 0.2;
+  padding: 10px;
   cursor: pointer;
-
 }
-.remove-button:hover{
+.remove-button:hover {
   opacity: 1;
   background-color: #464b50;
 }
@@ -604,7 +631,7 @@ fieldset label {
   padding: 0 20px 0 20px;
   color: #232323;
 }
-.shelf-item h5{
+.shelf-item h5 {
   font-weight: bold;
   font-size: 18px;
 }

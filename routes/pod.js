@@ -5,17 +5,26 @@ const unirest = require('unirest');
 const router = express.Router();
 const { User, Podcast, Genre, Podshelf, Review, Shelf } = require('../db/models');
 const { csrf, csrfProtection, bcrypt, check, validationResult, asyncHandler } = require("../lib/util")
+// const DomParser = require('dom-parser');
+// const parser = new DomParser();
+
 
 router.get('/:id', csrfProtection, asyncHandler(async (req, res) => {
     let podcast = await unirest.get(`${baseUrl}/podcasts/${req.params.id}?next_episode_pub_date=1479154463000&sort=recent_first`)
       .header('X-ListenAPI-Key', apiKey)
     podcast = await podcast.toJSON();
     podcast = podcast.body
-    episodes = podcast.episodes
+    let episodes = podcast.episodes
+
+    // episodes.forEach((epi) => {
+    //   let descrip = parser.parseFromString(epi.description, 'text/html');
+    //   epi.description = descrip.body.firstChild.textContent;
+    //   // console.log(descrip, 'descrip from pod router')
+    // })
 
     let otherPodcasts = await unirest.get(`${baseUrl}/podcasts/${podcast.id}/recommendations?safe_mode=0`)
     .header('X-ListenAPI-Key', apiKey)
-    otherPodcasts =await otherPodcasts.toJSON()
+    otherPodcasts = await otherPodcasts.toJSON()
     otherPodcasts = otherPodcasts.body.recommendations
     if (!otherPodcasts){
       otherPodcasts = [

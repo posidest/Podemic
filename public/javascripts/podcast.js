@@ -11,7 +11,7 @@ window.addEventListener('DOMContentLoaded', () => {
       json.forEach(review => {
 
         let newReview = document.createElement("div")
-        newReview.setAttribute('class', `user-${review.userId}`);
+        newReview.setAttribute('class', `user-${review.userId} individual-review`);
         newReview.setAttribute('id', `review-${review.id}`)
 
         let userName = document.createElement('p');
@@ -147,7 +147,17 @@ window.addEventListener('DOMContentLoaded', () => {
     };
     
     const hideDescriptionBtns = document.querySelectorAll('.hideDescription')
+    
     const descriptionDivs = document.querySelectorAll('.descriptionDiv')
+    const descriptions = document.querySelectorAll('.episode-description')
+
+    descriptionDivs.forEach((el, i) => {
+      let des = document.createElement('p')
+      des.innerHTML = descriptions[i].innerText;
+      el.appendChild(des)
+    })
+
+
     const descriptionBtns = document.querySelectorAll('.descriptionBtn')
 
     descriptionBtns.forEach((btn, i) => {
@@ -192,3 +202,5 @@ window.addEventListener('DOMContentLoaded', () => {
       })
     })
   });
+
+
