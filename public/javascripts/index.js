@@ -3,11 +3,14 @@
 
 window.addEventListener("DOMContentLoaded", async (event)=>{
   const searchButton = document.getElementById('searchButton')
-  searchButton.addEventListener('click', (event)=> {
-    document.getElementById('searchResults').classList.remove('hidden')
-    document.getElementById('results-header').classList.remove('hidden')
-    search()
-  })
+  if (searchButton){
+    searchButton.addEventListener('click', (event)=> {
+      document.getElementById('searchResults').classList.remove('hidden')
+      document.getElementById('results-header').classList.remove('hidden')
+      search()
+    })
+
+  }
 });
 
 const search= async () => {
@@ -23,9 +26,7 @@ const search= async () => {
   
   
 
-  // const term = new RegExp(`\w*\s*\w*\s*\w*\s*\w*\s*${searchTerm}\w*\s*\w*\s*\w*\s*\s*\w*\s*\w*`, 'i')
-  // const res = await fetch("/api/podcasts")
-  // const resJson = await res.json()
+  
   let searchResults = []
   const searchResultsDiv = document.getElementById("searchResults")
   let arrayOfChildren =[]
@@ -37,12 +38,10 @@ const search= async () => {
     
     for(let i=0; i<searchResults.length; i++){
         let pod = searchResults[i]
-        console.log(pod)
+        
       searchResultsDiv.innerText=''
       let ele =document.createElement("div")
-      // let searchHeader = document.createElement('h1')
-      // searchHeader.innerText="Search Results"
-      // searchResultsDiv.appendChild(searchHeader)
+      
       ele.setAttribute("class", "SearchResult___container")
       let podname = document.createElement('a')
       let podimg = document.createElement("img")

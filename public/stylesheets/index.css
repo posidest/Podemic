@@ -336,6 +336,13 @@ fieldset label {
 }
 
 /* INDIVIDUAL PODCAST PAGE (podcast.pug) */
+.message{
+  margin-top: 20px;
+  text-decoration: none;
+  color: rgb(26, 26, 26);
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+}
 
 .img_holder img {
   height: 800px;
@@ -539,34 +546,59 @@ fieldset label {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  border: 0.5px solid rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+#shelves{
+  display: flex;
+  flex-direction: column;
+}
+.shelf-contents img {
+  height: 450px;
+  width: 450px;
+  margin: 30px 50px 50px 50px;
+  transition: height 1.5s, width 1.5s;
+}
+.shelf-contents img:hover {
+  height: 550px;
+  width: 550px;
 }
 
-.shelf-contents img {
-  height: 250px;
-  width: 250px;
-  margin: 30px 50px 50px 50px;
-}
 
 .Podshelf__container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   padding-top: 20px;
   align-items: center;
   justify-content: center;
-  margin: 20px 0 60px 0;
+  margin: 10px 0 60px 0;
 }
 
 .shelf-icon {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+  border-bottom: 0.75px solid rgba(0, 0, 0, 0.1);
+  width: 100%;
 
+}
+.remove-button{
+  opacity: .2;
+  padding:10px;
+  cursor: pointer;
+
+}
+.remove-button:hover{
+  opacity: 1;
+  background-color: #464b50;
+}
 .shelf-icon h2 {
   padding: 0 20px 0 20px;
   color: #232323;
+}
+.shelf-item h5{
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .shelves input {

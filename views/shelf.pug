@@ -7,10 +7,11 @@ mixin shelf(shelf)
                 i(class='far fa-trash-alt')
         div(class="shelf-contents")
             each podcast in shelf.podcasts
-                button(class=`${shelf.id} remove-button` id=`${podcast.id}` type='button') Remove
-                a(class="pod-pic" href=`/podcasts/${podcast.id}`)
-                    div(class="shelf-item")
-                        img(src=`${podcast.image}`)
-                        h5=podcast.title
+                div
+                    a(class="pod-pic" href=`/podcasts/${podcast.id}`)
+                        div(class="shelf-item")
+                            img(src=`${podcast.image}`)
+                            h5=podcast.title
+                    button(class=`${shelf.id} remove-button` id=`${podcast.id}` type='button') Remove Podcast from Shelf
         div(class="message")
 

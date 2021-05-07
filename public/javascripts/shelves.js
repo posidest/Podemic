@@ -196,7 +196,8 @@ const shelfButtons = document.querySelectorAll(".shelf-icon")
       let spanInnerText = shelfButton.childNodes[0].id
       span.innerHTML = spanInnerText
     })
-   
+    const messageDiv = document.getElementsByClassName("message")
+    
 
     // select all of the delete shelf buttons
     const deleteShelvesButtons = document.getElementsByClassName("delete-shelf")
@@ -204,25 +205,33 @@ const shelfButtons = document.querySelectorAll(".shelf-icon")
     for(let i=0; i<deleteShelvesButtons.length; i++) {
       let deleteShelf = deleteShelvesButtons[i]
       deleteShelf.addEventListener("click", async (event) => {
-        event.preventDefault()
-        const delButton = event.target
-        const shelfTitle = delButton.title
-        const shelfId = delButton.id
+        
+        // event.preventDefault()
+        
+        const shelfTitle = deleteShelf.title
+        const shelfId = deleteShelf.id
+        
+      
         
         const types = ['Current', 'Thumbs Up', 'On My Radar', 'Meh', 'Thumbs Down'];
-        const messageDiv = document.querySelector('.add-shelf-message');
+        
         //check if its a default shelf
         if(types.includes(shelfTitle)){
-            messageDiv.innerHTML = "<span>You can't delete a default shelf</span>";
+            messageDiv[i].innerHTML = "<span>You can't delete a default shelf</span>";
         }else{
           const data = await fetch(`/api/shelves/${shelfId}`, {
             method: "POST"
           })
+          // console.log(data)
           if (data.ok){
-            messageDiv.innerHTML = data.message
+            
+            messageDiv[i].innerHTML = "Shelf was deleted"
             setTimeout(()=> {
               window.location.reload();
           }, 1000);
+          }
+          else{
+            messageDiv.innerHTML= "something went wrong"
           }
         }
       })
