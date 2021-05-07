@@ -85,6 +85,7 @@ router.get('/', csrfProtection, asyncHandler(async(req, res) => {
 
     for (let i=0; i < users_shelf.length; i++){
         let shelf = users_shelf[i]
+        console.log(shelf.podcasts, "this is self podcasts")
         let shelfname = shelf.name.split("+")
         let name = shelfname[0]
         let icon = shelfname[1]
@@ -103,8 +104,9 @@ router.get('/', csrfProtection, asyncHandler(async(req, res) => {
         let podcast;
         for (let j= 0; j< shelf.podcasts.length; j++){
             let pod = shelf.podcasts[j]
+            
             const client = Client({ apiKey: apiKey});
-            let response =await client.fetchPodcastById({id: pod.id, sort: 'recent_first',
+            let response =await client.fetchPodcastById({id: pod, sort: 'recent_first',
             }).then((response) => {
                 newPodsArray.push(response.data)
   // Get response json data here
