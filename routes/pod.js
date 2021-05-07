@@ -1,6 +1,6 @@
 const express = require('express');
 const apiKey = process.env.LISTEN_API_KEY
-const baseUrl = 'https://listen-api-test.listennotes.com/api/v2'
+const baseUrl = 'https://listen-api.listennotes.com/api/v2'
 const unirest = require('unirest');
 const router = express.Router();
 const { User, Podcast, Genre, Podshelf, Review, Shelf } = require('../db/models');
