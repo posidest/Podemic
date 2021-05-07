@@ -87,7 +87,6 @@ h4 {
   width: 100%;
 }
 
-.right-bar hr,
 .middle-ground hr {
   border-top: 0.2px solid rgba(0, 0, 0, 0.1);
 }
@@ -349,6 +348,15 @@ fieldset label {
   width: 800px;
 }
 
+.descriptionDiv {
+  margin-bottom: 25px;
+}
+
+#innerHeader {
+  margin-top: 40px;
+  margin-bottom: 60px;
+}
+
 .shelf_btn_container {
   display: flex;
   flex-direction: column;
@@ -371,7 +379,7 @@ fieldset label {
 }
 
 .pod_description {
-  width: 800px;
+  width: 700px;
   padding: 20px;
 }
 

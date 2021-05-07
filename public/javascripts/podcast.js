@@ -154,8 +154,8 @@ window.addEventListener('DOMContentLoaded', () => {
       btn.addEventListener('click', (e) => {
         e.preventDefault()
         descriptionDivs[i].classList.remove('hidden')
-        // btn.classList.add('hidden')
-        // hideDescriptionBtns[i].classList.remove('hidden')
+        btn.classList.add('hidden')
+        hideDescriptionBtns[i].classList.remove('hidden')
       })
     })
     

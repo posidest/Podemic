@@ -41,17 +41,12 @@ block content
                         //- button(class='hidePlayer hidden' type='button') Hide Player
                         div(class='player')
                             embed(src=episode.audio align="baseline" border="0" width="300" height="55" autostart="false" loop="true" background-color='white')
-                    //- audio controls
-                    //-     source(src=episode.audio)
-                            //- a(href=episode.audio target='_new') Listen
 
             +review-form
-            div
-                h3(class='idgrabber' id=podcast.id)= `What Other People are Saying About`
-                    aside 
-                        em
-                            b #{podcast.title}
-                div(id="ReviewDiv")
+            h3(class='idgrabber' id=podcast.id)= `What Other People are Saying About`
+                aside 
+                    em
+                        b #{podcast.title}
 
 
     .middle-ground 

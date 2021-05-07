@@ -81,14 +81,15 @@ block content
                         div(class="submit-button")
                             button(type="submit" class='submit-shelf-btn btn') Add new Shelf
                         div(class="add-shelf-message")
-            .right-bar
-                hr
-                .genreList
-                    h2 Genres
-                    ul
-                    for each_Genre in genre_info
-                        li
-                            a(href=`/genres/${each_Genre.id}` class='genreName') #{each_Genre.name}
+        div(class='middle-ground')
+            hr
+        .main-content-container        
+            .genreList
+                h2 Genres
+                ul
+                for each_Genre in genre_info
+                    li
+                        a(href=`/genres/${each_Genre.id}` class='genreName') #{each_Genre.name}
 
-                    
+                
 
