@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const popReviews = async (podcastId) => {
     const res = await fetch(`/api/podcasts/${podcastId}/reviews`)
     const json = await res.json()
-    // console.log(json)
+    
 
     if (res.ok) {
       json.forEach(review => {
