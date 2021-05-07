@@ -13,14 +13,13 @@ block content
             //- h4 Description
             p #{podcast.description}
             h4(class="avgRating" id=`avg_rating-${podcast.id}`)
-            div(class = "shelf_btn_container")
-                h3(class='userId', id=userId) Add To My Shelf
-
-            div(class="shelf_btn__container"  id=podcast.id)
+        div(class = "shelf_btn_container")
+            h3(class='userId', id=userId) Add To My Shelf
+            div(class="button-holder" id=podcast.id)
                 each shelf in shelves
                     button(class="shelf_btn" id=`${shelf.id}` type='button' title=`${shelf.title}`)
                         span(id=`${shelf.icon}`)
-            div(class="message") 
+        div(class="message") 
     div(class='middle-ground')
         hr
     .main-content-container                    
@@ -43,10 +42,12 @@ block content
                             embed(src=episode.audio align="baseline" border="0" width="300" height="55" autostart="false" loop="true" background-color='white')
 
             +review-form
-            h3(class='idgrabber' id=podcast.id)= `What Other People are Saying About`
-                aside 
-                    em
-                        b #{podcast.title}
+            div
+                h3(class='idgrabber' id=podcast.id)= `What Other People are Saying About`
+                    aside 
+                        em
+                            b #{podcast.title}
+                div(id="ReviewDiv")
 
 
     .middle-ground 
