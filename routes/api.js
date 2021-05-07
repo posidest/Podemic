@@ -67,7 +67,7 @@ router.post("/shelves/:id", asyncHandler( async (req, res) => {
     
     let oldShelf = await Shelf.destroy({ where: { id: shelfId } });
     
-
+    let message = {message: "you deleted this shelf"}
     
     res.json(message);
 }))
