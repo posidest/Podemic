@@ -29,24 +29,19 @@ block content
                 h2 Episodes
                 each episode in episodes
                     div(class='episode-div')
-                        h5=episode.title
-                        //- button(type='button' class='descriptionBtn')
-                        //-     Show Description
-                        //- button(type='button' class='hideDescription hidden')
-                        //-     Hide Description    
+                        h5=episode.title  
                         div(class='descriptionDiv')
-                            p=episode.description
-                        //- a(href=episode.link) Episode Link
-                        //- button(class='playerBtn' type='button') Listen
-                        //- button(class='hidePlayer hidden' type='button') Hide Player
+                            p(class='episode-description hidden')=episode.description
                         div(class='player')
                             embed(src=episode.audio align="baseline" border="0" width="300" height="55" autostart="false" loop="true" background-color='white')
 
             +review-form
-            h3(class='idgrabber' id=podcast.id)= `What Other People are Saying About`
-                aside 
-                    em
-                        b #{podcast.title}
+            div
+                h3(class='idgrabber' id=podcast.id)= `What Other People are Saying About`
+                    aside 
+                        em
+                            b #{podcast.title}
+                div(id='ReviewDiv')
 
 
     .middle-ground 
