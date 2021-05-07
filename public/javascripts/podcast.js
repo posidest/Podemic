@@ -144,7 +144,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
       });
 
-    });
+    };
     
     const hideDescriptionBtns = document.querySelectorAll('.hideDescription')
     const descriptionDivs = document.querySelectorAll('.descriptionDiv')

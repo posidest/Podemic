@@ -58,23 +58,18 @@ router.post('/shelves/new', csrfProtection, asyncHandler(async (req, res) => {
     const userId = req.session.auth.userId;
     let name = `${shelfname}+${shelficon}`;
     await Shelf.create({userId, name})
-    const message = {
-        message: `added ${shelfname} ${shelficon}`
-    }
-
-
-    res.redirect('/me');
+    
+    res.redirect("/me");
 }))
 
 router.post("/shelves/:id", asyncHandler( async (req, res) => {
     const shelfId = req.params.id
+    
     let oldShelf = await Shelf.destroy({ where: { id: shelfId } });
-    const message = {
-        message: `Shelf was deleted`
-    }
+    
 
-
-    res.redirect('/me');
+    
+    res.json(message);
 }))
 
 

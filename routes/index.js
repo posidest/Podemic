@@ -18,6 +18,11 @@ router.get('/', csrfProtection, (req, res) => {
 
 // for the pod feed page
  router.get('/feed', asyncHandler( async (req, res) => {
+  let thumbsupId = req.session.auth.userShelves['Thumbs Up'];
+  let thumbsUpShelf = await Shelf.findByPk(thumbsupId)
+  thumbsUpShelf = thumbsUpShelf.podcasts
+  
+  let randIndex = Math.floor(Math.random() * thumbsUpShelf.length);
   
   const genre_info = await unirest.get(`${baseUrl}/genres?top_level_only=1`)
   .header('X-ListenAPI-Key', apiKey)
@@ -32,25 +37,14 @@ router.get('/', csrfProtection, (req, res) => {
     //   let genrePods = {genre: genreName, podcasts: podcasts.body.podcasts}
     //   genres.push(genrePods)
     // }'https://listen-api.listennotes.com/api/v2/podcasts/25212ac3c53240a880dd5032e547047b/recommendations?safe_mode=0'
-    const featuredRes = await unirest.get(`${baseUrl}/podcasts/25212ac3c53240a880dd5032e547047b/recommendations?safe_mode=0`)
+    const featuredRes = await unirest.get(`${baseUrl}/podcasts/${thumbsUpShelf[randIndex]}/recommendations?safe_mode=0`)
   .header('X-ListenAPI-Key', apiKey)
   let resJson = await featuredRes.toJSON();
- 
-  // let featuredPods = []
-  // if (featuredRes.ok) {
-  //   if (resJson.body.recommendations){
-  //     for (let i =0; i < 5; i++){
-  //       const ele= resJson.body.recommendations[Math.floor(Math.random()* resJson.body.recommendations.length)]
-  //       if (!featuredPods.includes(ele)){
-  //         featuredPods.push(ele)
-  //       } else{
-  //         i--
-  //       }
-        
-  //     }
+ let featuredPods = [];
+  if(resJson.recommendations){
 
-  //   }
-  //   else{
+    featuredPods= resJson.recommendations
+  }
       featuredPods = [
           {
             "id": "19545a5b82bf42d3ba40d973c35e9851",
@@ -262,15 +256,7 @@ router.get('/', csrfProtection, (req, res) => {
           }
         ]
 
-      // for (let i =0; i < 5; i++){
-        //   // const ele= recommended[Math.floor(Math.random()*recommended.length)]
-        //   const ele = await recommended[i]
-        //   await console.log(ele, 'recommendation from feed route')
-        //   if (!featuredPods.includes(ele)){
-          //     await featuredPods.push(ele)
-          //   }
-          // }
-
+      
       //featuredPods was undefined...for now i am sending all the featured pods as recommended
 
 
