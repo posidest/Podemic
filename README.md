@@ -7,7 +7,9 @@
 * [Technologies](#technologies)
 * [Features](#features)
  ## About
-   Podcast app to keep up to date with all the podcasts user's have listened to and liked (or hated). Goodreads clone with a twist
+   Podcast app to keep up to date with all the podcasts user's have listened to and liked (or hated). Goodreads clone with a twist.  
+   
+   [Live Link](https://podemic2point0.herokuapp.com)
  ## Motivation
   Created so that users can record all the podcasts they've been reccomended or have wanted to listen to as well as their favorites
  ## Technologies
